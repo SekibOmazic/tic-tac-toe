@@ -92,12 +92,11 @@
 
 (defn get-winner
   [board]
-  (->> board
-       winning-lists
-       (map has-winner?)
-       (filter #{:X :O})
-       first
-       ))
+  (->> board             ;; take the board
+       winning-lists     ;; split it into the winning lists
+       (map has-winner?) ;; map items to the winning player or nil
+       (filter #{:X :O}) ;; filter out nil values
+       first))           ;; take the first value if any or nil
 
 
 (defn game
